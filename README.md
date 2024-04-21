@@ -5,12 +5,12 @@ A Python tool for efficient geospatial data querying and processing, vital for e
 ## Usage
 
 1. Clone the repository.
-2. Install dependencies using `pip install -r requirements.txt`.
-3. Explore and run scripts in the `src/` directory.
+2. Install dependencies.
+3. Explore and run scripts in the directory.
 
 ## Code Overview
 
-- `database_connection.py`: Manages connections to the WCPS server (class in `classes.py`).
-- `datacube.py`: Interacts with the WCPS server and performs datacube operations (class in `classes.py`).
+- `database_connection`: Manages connections to the WCPS server (class in `classes.py`).
+- `datacube`: Interacts with the WCPS server and performs datacube operations (class in `classes.py`).
 - `main.py/`: Contains implementation and unit tests for `DatabaseConnection` and `Datacube` classes.
 - `docs/`: Documentation including docstrings and user training material.
