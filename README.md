@@ -13,4 +13,4 @@ A Python tool for efficient geospatial data querying and processing, vital for e
 - `database_connection`: Manages connections to the WCPS server (class in `classes.py`).
 - `datacube`: Interacts with the WCPS server and performs datacube operations (class in `classes.py`).
 - `main.py/`: Contains implementation and unit tests for `DatabaseConnection` and `Datacube` classes.
-- `docs/`: Documentation including docstrings and user training material.
+- `project_documentation.pdf/`: Documentation including docstrings and user training material.
