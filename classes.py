@@ -1,0 +1,35 @@
+import requests
+
+class DatabaseConnection:
+    def __init__(self, server_url):
+        self.server_url = server_url
+
+    def execute_wcps_query(self, query):
+        url = f"{self.server_url}"
+        response = requests.post(url, data={'query': query})
+        if response.status_code == 200:
+            if response.headers['Content-Type'] == 'image/png':
+                return response.content  # Return binary content for images
+            else:
+                return response.text
+        else:
+            return f"Error: Failed to execute query. Status code {response.status_code}"
+
+class Datacube:
+    def __init__(self, dbc):
+        self.dbc = dbc
+        
+    def min_datacube(self, datacube_name, subset_params):
+        query = f"for $c in ({datacube_name}) return min($c[{subset_params}])"
+        return self.dbc.execute_wcps_query(query)
+    
+    def d_multiband(self, lat, long, datacube):
+        query = f"for $c in ({datacube}) return $c[E({lat}), N({long})]"
+        return self.dbc.execute_wcps_query(query)
+    
+    def _value(self, query):
+        return self.dbc.execute_wcps_query(query)
+    
+    def encode_temp_color_image(self, date):
+        query = f'for $c in (AvgTemperatureColor) return encode($c[ansi("{date}")], "image/png")'
+        return self.dbc.execute_wcps_query(query)
